@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "515804502893",
+    "project_id": "lumine-ff425",
+    "storage_bucket": "lumine-ff425.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515804502893:android:87830d2aff74e71ffe5864",
+        "android_client_info": {
+          "package_name": "com.example.lumine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmKfUpyoEVeLryEYQJPs9UEUvkf1KllBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
