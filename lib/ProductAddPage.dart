@@ -51,7 +51,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
       // Show an error message or alert dialog for incomplete fields
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please fill in all fields'),
+          content: Text('Please fill in all fields...'),
           backgroundColor: Colors.red,
         ),
       );
