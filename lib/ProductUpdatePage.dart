@@ -113,130 +113,130 @@ class _ProductUpdatePageState extends State<ProductUpdatePage> {
         title: Text('Update Product'),
         backgroundColor: Colors.black,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: _productNameController,
-              decoration: InputDecoration(labelText: 'Product Name'),
-            ),
-            SizedBox(height: 8),
-            TextField(
-              controller: _quantityController,
-              decoration: InputDecoration(labelText: 'Quantity'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 8),
-            TextField(
-              controller: _priceController,
-              decoration: InputDecoration(labelText: 'Price'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 8),
-            Text('Size:', style: TextStyle(fontSize: 16)),
-            SizedBox(height: 4),
-            Row(
-              children: [
-                Radio(
-                  value: 'S',
-                  groupValue: _selectedSize,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSize = value.toString();
-                    });
-                  },
-                ),
-                Text('S'),
-                Radio(
-                  value: 'M',
-                  groupValue: _selectedSize,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSize = value.toString();
-                    });
-                  },
-                ),
-                Text('M'),
-                Radio(
-                  value: 'L',
-                  groupValue: _selectedSize,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSize = value.toString();
-                    });
-                  },
-                ),
-                Text('L'),
-                Radio(
-                  value: 'XL',
-                  groupValue: _selectedSize,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSize = value.toString();
-                    });
-                  },
-                ),
-                Text('XL'),
-                Radio(
-                  value: 'XXL',
-                  groupValue: _selectedSize,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSize = value.toString();
-                    });
-                  },
-                ),
-                Text('XXL'),
-              ],
-            ),
-            SizedBox(height: 8),
-            DropdownButtonFormField<String>(
-              value: _selectedCategory,
-              items: ['Category A', 'Category B', 'Category C', 'Category D']
-                  .map((category) {
-                return DropdownMenuItem<String>(
-                  value: category,
-                  child: Text(category),
-                );
-              }).toList(),
-              hint: Text('Select Category'),
-              onChanged: (value) {
-                setState(() {
-                  _selectedCategory = value!;
-                });
-              },
-            ),
-            SizedBox(height: 60),
-            Center(
-              child: SizedBox(
-                width: 300,
-                height: 50,// Set the desired width of the button
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Call the updateProduct function when the button is pressed
-                    updateProduct();
-                  },
-                  child: Text(
-                    'Update Product',
-                    style: TextStyle(
-                      fontSize: 20, // Change text size here
-                      fontWeight: FontWeight.bold, // Make text bold
-                    ),
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height, // Set container height to screen height
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: _productNameController,
+                decoration: InputDecoration(labelText: 'Product Name'),
+              ),
+              SizedBox(height: 8),
+              TextField(
+                controller: _quantityController,
+                decoration: InputDecoration(labelText: 'Quantity'),
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 8),
+              TextField(
+                controller: _priceController,
+                decoration: InputDecoration(labelText: 'Price'),
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 8),
+              Text('Size:', style: TextStyle(fontSize: 16)),
+              SizedBox(height: 4),
+              Row(
+                children: [
+                  Radio(
+                    value: 'S',
+                    groupValue: _selectedSize,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSize = value.toString();
+                      });
+                    },
                   ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.black, // Change button color here
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // Set border radius here
+                  Text('S'),
+                  Radio(
+                    value: 'M',
+                    groupValue: _selectedSize,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSize = value.toString();
+                      });
+                    },
+                  ),
+                  Text('M'),
+                  Radio(
+                    value: 'L',
+                    groupValue: _selectedSize,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSize = value.toString();
+                      });
+                    },
+                  ),
+                  Text('L'),
+                  Radio(
+                    value: 'XL',
+                    groupValue: _selectedSize,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSize = value.toString();
+                      });
+                    },
+                  ),
+                  Text('XL'),
+                  Radio(
+                    value: 'XXL',
+                    groupValue: _selectedSize,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSize = value.toString();
+                      });
+                    },
+                  ),
+                  Text('XXL'),
+                ],
+              ),
+              SizedBox(height: 8),
+              DropdownButtonFormField<String>(
+                value: _selectedCategory,
+                items: ['Category A', 'Category B', 'Category C', 'Category D']
+                    .map((category) {
+                  return DropdownMenuItem<String>(
+                    value: category,
+                    child: Text(category),
+                  );
+                }).toList(),
+                hint: Text('Select Category'),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedCategory = value!;
+                  });
+                },
+              ),
+              SizedBox(height: 60),
+              Center(
+                child: SizedBox(
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      updateProduct();
+                    },
+                    child: Text(
+                      'Update Product',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-
-
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -251,23 +251,25 @@ class ProductUpdateListPage extends StatelessWidget {
         title: Text('Product List'),
         backgroundColor: Colors.black,
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('products').snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(), // Display loading indicator
-            );
-          }
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'), // Display error if any
-            );
-          }
-          final products = snapshot.data!.docs;
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal, // Scroll horizontally
-            child: DataTable(
+      body: SingleChildScrollView(
+      scrollDirection: Axis.horizontal, // Scroll horizontally
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('products').snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            }
+            final products = snapshot.data!.docs;
+            return DataTable(
               columns: [
                 DataColumn(label: Text('Product Name')),
                 DataColumn(label: Text('Qty')),
@@ -299,9 +301,10 @@ class ProductUpdateListPage extends StatelessWidget {
                   )),
                 ]);
               }).toList(),
-            ),
-          );
-        },
+            );
+          },
+        ),
+      ),
       ),
     );
   }

@@ -208,7 +208,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
               DropdownButtonFormField<String>(
                 value:
                 _selectedCategory.isNotEmpty ? _selectedCategory : null,
-                items: ['Category A', 'Category B', 'Category C', 'Category D']
+                items: ['Tshirt and Crop tops', 'Dressers', 'Skirts and Pants', 'Shirt and Tshirts', 'Denim and Pants']
                     .map((category) {
                   return DropdownMenuItem<String>(
                     value: category,
