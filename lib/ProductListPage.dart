@@ -39,12 +39,6 @@ class ProductListPage extends StatelessWidget {
                   DataCell(Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () {
-                          // Action when edit button is pressed
-                        },
-                      ),
-                      IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {
                           // Action when delete button is pressed
