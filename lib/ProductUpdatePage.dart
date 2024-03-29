@@ -248,7 +248,7 @@ class ProductUpdateListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product List'),
+        title: Text('Product List '),
         backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
