@@ -147,7 +147,7 @@ class ProductDetailPage extends StatelessWidget {
           SizedBox(height: 20.0),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'ssss@gmail.com',),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com',),
     );
   }
 }

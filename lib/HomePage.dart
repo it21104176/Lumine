@@ -103,7 +103,17 @@ class HomePage extends StatelessWidget {
                   crossAxisCount: 2,
                   children: List.generate(
                     products.length,
-                        (index) => ProductBox(product: products[index]),
+                        (index) => GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoryPage(),
+                          ),
+                        );
+                      },
+                      child: ProductBox(product: products[index]),
+                    ),
                   ),
                 );
               },
@@ -111,8 +121,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'ssss@gmail.com',),
-
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com',),
     );
   }
 }

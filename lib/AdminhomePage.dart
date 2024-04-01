@@ -17,8 +17,7 @@ class AdminhomePage extends StatelessWidget {
         ),
         body: Align(
           alignment: Alignment.topCenter,
-          child: Padding(
-            padding: EdgeInsets.only(top: 50.0), // Add padding to position buttons below the app bar
+          child: Padding(            padding: EdgeInsets.only(top: 50.0), // Add padding to position buttons below the app bar
             child: Column(
               children: <Widget>[
                 ElevatedButton(

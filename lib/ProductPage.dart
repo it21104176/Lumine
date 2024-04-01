@@ -116,7 +116,7 @@ class ProductPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'ssss@gmail.com'),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com'),
     );
   }
 }
