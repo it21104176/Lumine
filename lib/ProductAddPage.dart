@@ -114,7 +114,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                 onPressed: _pickImage,
                 child: Text('Pick Image'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.green, // Change button color here
+                  backgroundColor: Colors.green, // Change button color here
                 ),
               ),
               SizedBox(height: 20),
@@ -231,7 +231,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
                     fontWeight: FontWeight.bold, // Make text bold
                   ),),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black, // Change button color here
+                  backgroundColor: Colors.black, // Change button color here
                   minimumSize: Size(10, 50), // Set minimum size for button
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10), // Set border radius here

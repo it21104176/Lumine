@@ -116,7 +116,7 @@ class ProductDetailPage extends StatelessWidget {
                       // Action for Buy Now button
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black, // Change button color here
+                      backgroundColor: Colors.black, // Change button color here
                       minimumSize: Size(300, 50), // Set minimum size for button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10), // Set border radius here
@@ -132,7 +132,7 @@ class ProductDetailPage extends StatelessWidget {
                       // Action for Add to Cart button
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black, // Change button color here
+                      backgroundColor: Colors.black, // Change button color here
                       minimumSize: Size(300, 50), // Set minimum size for button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10), // Set border radius here

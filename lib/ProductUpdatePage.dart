@@ -227,7 +227,7 @@ class _ProductUpdatePageState extends State<ProductUpdatePage> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
