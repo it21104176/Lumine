@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:lumine/ProductPage.dart';
 
 import 'BottomNavBar.dart';
+import 'Cart.dart';
 
 class CategoryPage extends StatelessWidget {
+  final Cart cart; // Add cart parameter
+
+  CategoryPage({required this.cart}); // Constructor to accept the cart parameter
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,7 @@ class CategoryPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com'),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com', cart: cart),
     );
   }
 
@@ -43,7 +48,7 @@ class CategoryPage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductPage(subCategoryName: subCategories.first, backgroundColor: backgroundColor, subCategoryImage: subCategoryImages.first),
+            builder: (context) => ProductPage(subCategoryName: subCategories.first, backgroundColor: backgroundColor, subCategoryImage: subCategoryImages.first, cart: cart), // Pass cart to ProductPage
           ),
         );
       },
@@ -81,7 +86,7 @@ class CategoryPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductPage(subCategoryName: subCategory, backgroundColor: backgroundColor, subCategoryImage: subCategoryImage),
+                        builder: (context) => ProductPage(subCategoryName: subCategory, backgroundColor: backgroundColor, subCategoryImage: subCategoryImage, cart: cart), // Pass cart to ProductPage
                       ),
                     );
                   },

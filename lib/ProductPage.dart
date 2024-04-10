@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lumine/ProductDetailPage.dart';
-
 import 'BottomNavBar.dart';
+import 'Cart.dart';
+import 'HomePage.dart';
 
+// Define the Product class
 class Product {
   final String name;
   final String imageUrl;
@@ -13,12 +15,81 @@ class Product {
   Product({required this.name, required this.imageUrl, required this.size, required this.price});
 }
 
+
+class CartPage extends StatelessWidget {
+  final Cart cart;
+
+  CartPage({required this.cart});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My Cart'),
+        backgroundColor: Colors.black,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.itemCount,
+              itemBuilder: (context, index) {
+                final product = cart.items[index];
+                return Card(
+                  margin: EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text(product.name),
+                    subtitle: Text('RS: ${product.price.toStringAsFixed(2)}'),
+                    leading: SizedBox(
+                      width: 80.0,
+                      height: 80.0,
+                      child: Image.network(
+                        product.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage(cart: cart)),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              minimumSize: Size(300, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: Text('Buy Now',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(height: 40),
+        ],
+      ),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com', cart: cart),
+    );
+  }
+}
+
+
 class ProductPage extends StatelessWidget {
   final String subCategoryName;
-  final Color backgroundColor; // Background color received from CategoryPage
+  final Color backgroundColor;
   final String subCategoryImage;
+  final Cart cart; // Add cart parameter
 
-  ProductPage({required this.subCategoryName, required this.backgroundColor, required this.subCategoryImage});
+  ProductPage({required this.subCategoryName, required this.backgroundColor, required this.subCategoryImage, required this.cart});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +99,13 @@ class ProductPage extends StatelessWidget {
         backgroundColor: Colors.black,
       ),
       body: Container(
-        color: backgroundColor, // Set background color
+        color: backgroundColor,
         child: Column(
           children: [
             SizedBox(height: 40.0),
-
             Container(
               decoration: BoxDecoration(
-                color: Color(0xFFFFD9D9), // Set the background color here
+                color: Color(0xFFFFD9D9),
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -57,16 +127,13 @@ class ProductPage extends StatelessWidget {
                       subCategoryImage,
                       height: 150.0,
                       width: 300.0,
-                      fit: BoxFit.cover, // Set the fit property to BoxFit.cover
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
             ),
-
             SizedBox(height: 40.0),
-
-            // Product Grid
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance.collection('products').where('category', isEqualTo: subCategoryName).snapshots(),
@@ -102,7 +169,7 @@ class ProductPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ProductDetailPage(product: products[index], backgroundColor: backgroundColor),
+                              builder: (context) => ProductDetailPage(product: products[index], backgroundColor: backgroundColor, cart: cart), // Pass the cart instance
                             ),
                           );
                         },
@@ -116,7 +183,7 @@ class ProductPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com'),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com', cart: cart),
     );
   }
 }
@@ -131,7 +198,7 @@ class ProductBox extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.white, // Set background color to white
+        color: Colors.white,
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(8.0),
       ),

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'BottomNavBar.dart';
+import 'Cart.dart';
 import 'CategoryPage.dart';
-import 'ProfilePage.dart';
+import 'ProductPage.dart';
 
 class Products {
   final String name;
@@ -13,6 +14,10 @@ class Products {
 }
 
 class HomePage extends StatelessWidget {
+  final Cart cart; // Add cart parameter
+
+  HomePage({required this.cart}); // Constructor to accept the cart parameter
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,14 +51,14 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-
                         SizedBox(height: 10),
                         Text(
                           'Our new special offers here. you can find matching dress',
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 20),
-                        Center( // Center widget added
+                        Center(
+                          // Center widget added
                           child: Text(
                             '20%',
                             style: TextStyle(
@@ -108,7 +113,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CategoryPage(),
+                            builder: (context) => CategoryPage(cart: cart), // Pass cart to CategoryPage
                           ),
                         );
                       },
@@ -121,7 +126,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com',),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com', cart: cart),
     );
   }
 }

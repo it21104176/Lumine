@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'BottomNavBar.dart';
+import 'Cart.dart';
 import 'CategoryPage.dart';
 import 'HomePage.dart';
 import 'ProductPage.dart';
@@ -8,13 +9,14 @@ import 'ProductPage.dart';
 class ProductDetailPage extends StatelessWidget {
   final Product product;
   final Color backgroundColor; // Background color received from ProductPage
+  final Cart cart;
 
-  ProductDetailPage({required this.product, required this.backgroundColor});
+  ProductDetailPage({required this.product, required this.backgroundColor, required this.cart});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor, // Set background color for Scaffold
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Text(''),
         backgroundColor: backgroundColor,
@@ -30,8 +32,8 @@ class ProductDetailPage extends StatelessWidget {
                 children: [
                   SizedBox(height: 20.0),
                   Container(
-                    height: 300, // Specify the desired height
-                    width: double.infinity, // Set width to occupy the entire screen width
+                    height: 300,
+                    width: double.infinity,
                     child: Image.network(
                       product.imageUrl,
                       fit: BoxFit.cover,
@@ -45,7 +47,7 @@ class ProductDetailPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black, // Set text color
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -95,7 +97,7 @@ class ProductDetailPage extends StatelessWidget {
                           'RS: ${product.price.toStringAsFixed(2)}',
                           style: TextStyle(
                             fontSize: 18.0,
-                            color: Colors.black, // Set text color
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -116,10 +118,10 @@ class ProductDetailPage extends StatelessWidget {
                       // Action for Buy Now button
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black, // Change button color here
-                      minimumSize: Size(300, 50), // Set minimum size for button
+                      backgroundColor: Colors.black,
+                      minimumSize: Size(300, 50),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10), // Set border radius here
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: Text('Buy Now'),
@@ -129,13 +131,17 @@ class ProductDetailPage extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Action for Add to Cart button
+                      // Add to Cart action
+                      cart.addToCart(product);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Added to Cart')),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black, // Change button color here
-                      minimumSize: Size(300, 50), // Set minimum size for button
+                      backgroundColor: Colors.black,
+                      minimumSize: Size(300, 50),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10), // Set border radius here
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: Text('Add to Cart'),
@@ -147,7 +153,7 @@ class ProductDetailPage extends StatelessWidget {
           SizedBox(height: 20.0),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com',),
+      bottomNavigationBar: BottomNavBar(userEmail: 'user1@gmail.com', cart: cart),
     );
   }
 }

@@ -5,7 +5,13 @@ import 'package:lumine/LoginPage.dart';
 import 'package:lumine/ProductPage.dart';
 import 'package:lumine/SignupPage.dart';
 
+import 'Cart.dart';
+
 class SplashScreen extends StatelessWidget {
+  final Cart cart; // Add cart parameter
+
+  SplashScreen({required this.cart}); // Constructor to accept the cart parameter
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,11 +84,11 @@ class SplashScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to ProductPage when pressed
+                  // Navigate to CategoryPage when pressed
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CategoryPage(),
+                      builder: (context) => CategoryPage(cart: cart), // Pass the cart instance to CategoryPage
                     ),
                   );
                 },
@@ -122,7 +128,8 @@ class SplashScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?",
+                    Text(
+                      "Already have an account?",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,

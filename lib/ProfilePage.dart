@@ -145,7 +145,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(userEmail: widget.email), // Pass the user's email to BottomNavBar
     );
   }
 }
